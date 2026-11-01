@@ -1,0 +1,21 @@
+
+@startuml
+left to right direction
+
+title COLORS Web Application - Use Case Diagram
+
+actor "User" as User
+
+rectangle "COLORS Web Application" {
+    usecase "Log In" as UC1
+    usecase "Add Color" as UC2
+    usecase "Search Colors" as UC3
+    usecase "Log Out" as UC4
+}
+
+User -- UC1
+User -- UC2
+User -- UC3
+User -- UC4
+
+@enduml

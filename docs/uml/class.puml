@@ -1,0 +1,80 @@
+
+@startuml
+title COLORS Web Application - Class Diagram
+
+left to right direction
+skinparam classAttributeIconSize 0
+
+class "code.js" as Frontend <<JavaScript Module>> {
+    - userId: int
+    - firstName: string
+    - lastName: string
+    --
+    + doLogin()
+    + saveCookie()
+    + readCookie()
+    + doLogout()
+    + addColor()
+    + searchColor()
+}
+
+class "Login.php" as Login <<PHP Endpoint>> {
+    + getRequestInfo()
+    + returnWithInfo()
+    + returnWithError()
+}
+
+class "AddColor.php" as AddColor <<PHP Endpoint>> {
+    + getRequestInfo()
+    + returnWithError()
+}
+
+class "SearchColors.php" as SearchColors <<PHP Endpoint>> {
+    + getRequestInfo()
+    + returnWithInfo()
+    + returnWithError()
+}
+
+class "db.php" as Database <<PHP Module>> {
+    + conn: mysqli
+}
+
+class "Users" as Users <<MySQL Table>> {
+    + ID: int
+    + FirstName: string
+    + LastName: string
+    + Login: string
+    + Password: string
+}
+
+class "Colors" as Colors <<MySQL Table>> {
+    + ID: int
+    + Name: string
+    + UserID: int
+}
+
+Frontend ..> Login : Login request
+Frontend ..> AddColor : Add color request
+Frontend ..> SearchColors : Search request
+
+Login ..> Database : Uses connection
+AddColor ..> Database : Uses connection
+SearchColors ..> Database : Uses connection
+
+Login ..> Users : Reads
+AddColor ..> Colors : Inserts
+SearchColors ..> Colors : Searches
+
+Users "1" -- "0..*" Colors : owns
+
+note bottom of Colors
+  UserID links colors to users logically.
+  The lab SQL does not declare a foreign key.
+end note
+
+note bottom of Frontend
+  JavaScript and PHP use procedural functions.
+  Module boxes represent files, not actual OOP classes.
+end note
+
+@enduml
