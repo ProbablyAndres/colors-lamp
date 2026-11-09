@@ -1,0 +1,19 @@
+{
+  "name": "colors-lamp-frontend-lint",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Development-only linting for the COLORS LAMP frontend",
+  "scripts": {
+    "lint": "npm run lint:html && npm run lint:css && npm run lint:js",
+    "lint:html": "htmlhint \"public/**/*.html\"",
+    "lint:css": "stylelint \"public/**/*.css\"",
+    "lint:js": "eslint \"public/**/*.js\""
+  },
+  "devDependencies": {
+    "@eslint/js": "^9.0.0",
+    "eslint": "^9.0.0",
+    "globals": "^15.0.0",
+    "htmlhint": "^1.0.0",
+    "stylelint": "^16.0.0"
+  }
+}

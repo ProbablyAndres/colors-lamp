@@ -1,0 +1,23 @@
+name: Frontend lint
+
+on:
+  push:
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  lint:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out code
+        uses: actions/checkout@v4
+      - name: Set up Node.js for lint tools
+        uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+      - name: Install lint tools
+        run: npm install --no-audit --no-fund
+      - name: Check HTML, CSS, and JavaScript
+        run: npm run lint

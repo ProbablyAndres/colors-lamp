@@ -1,0 +1,14 @@
+{
+  "rules": {
+    "block-no-empty": true,
+    "color-no-invalid-hex": true,
+    "color-hex-length": "short",
+    "declaration-block-no-duplicate-properties": true,
+    "font-family-name-quotes": "always-where-required",
+    "no-duplicate-selectors": true,
+    "property-no-unknown": true,
+    "selector-pseudo-class-no-unknown": true,
+    "unit-no-unknown": true,
+    "alpha-value-notation": "number"
+  }
+}
